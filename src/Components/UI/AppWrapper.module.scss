@@ -1,0 +1,53 @@
+@import "src/styles/config.scss";
+
+.wrapper {
+  border: 3px solid $primaryColor;
+  border-radius: 6px 6px 0 0;
+  .header {
+    @include flexRow;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    background-color: $primaryColor;
+    .title {
+      @include flexRow;
+      align-items: flex-end;
+      padding: 6px 0 4px 0;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 500;
+      img {
+        width: 16px;
+        margin-right: 5px;
+      }
+    }
+    .buttons {
+      @include flexRow;
+      gap: 2px;
+      button {
+        @include flexCenter;
+        height: 26px;
+        width: 26px;
+        border-radius: 4px;
+        color: #fff;
+        border: 1px solid #fff;
+        color: #fff;
+        &.close {
+          background: linear-gradient(
+            345deg,
+            rgba(195, 55, 20, 1) 5%,
+            rgba(233, 50, 4, 1) 55%,
+            rgb(255, 220, 214) 110%
+          );
+        }
+        &.resize {
+          background: linear-gradient(
+            323deg,
+            rgba(16, 83, 189, 1) 0%,
+            rgba(47, 110, 241, 1) 55%,
+            rgba(142, 184, 254, 1) 100%
+          );
+        }
+      }
+    }
+  }
+}
