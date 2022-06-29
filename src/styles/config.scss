@@ -15,3 +15,11 @@ $primaryColor: #245dda;
   justify-content: center;
   align-items: center;
 }
+
+@mixin winXPDefaultBorder {
+  border: 2px solid;
+  border-bottom-color: #fffefe;
+  border-right-color: #fffefe;
+  border-left-color: #7b7b7b;
+  border-top-color: #7b7b7b;
+}
