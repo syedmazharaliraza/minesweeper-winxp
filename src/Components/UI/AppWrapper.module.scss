@@ -4,13 +4,12 @@
   border: 4px solid $primaryColor;
   border-radius: 6px 6px 0 0;
   .header {
-    @include flexRow;
+    @include flex(row);
     justify-content: space-between;
     padding-bottom: 2px;
     background-color: $primaryColor;
     .title {
-      @include flexRow;
-      align-items: flex-end;
+      @include flex(row, $align-item: flex-end);
       padding: 6px 8px 4px 0;
       font-size: 14px;
       color: #fff;
@@ -21,10 +20,10 @@
       }
     }
     .buttons {
-      @include flexRow;
+      @include flex(row);
       gap: 2px;
       button {
-        @include flexCenter;
+        @include flex(row, center, center);
         cursor: pointer;
         height: 26px;
         width: 26px;

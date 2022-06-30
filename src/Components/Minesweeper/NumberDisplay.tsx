@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./NumberDisplay.module.scss";
 
-type Props = {
+interface Props {
   value: number;
-};
+}
 const NumberDisplay: React.FC<Props> = ({ value }) => {
   return (
     <div className={styles.numberDisplay}>

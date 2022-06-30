@@ -3,18 +3,16 @@
 .container {
   background: #c2c2c2;
   padding: 16px;
-  border: 2px solid #fdfefe;
+  border: 2px solid $border-white;
 
   .header {
-    @include winXPDefaultBorder;
-    @include flexCenter;
-    justify-content: space-between;
+    @include winXPDefaultBorder($border-grey, $border-white, 2px);
+    @include flex(row, $just-cont: space-between, $align-item: center);
     background: #c0c0c0;
     padding: 10px 12px;
   }
   .body {
-    @include winXPDefaultBorder;
-    border-width: 4px;
+    @include winXPDefaultBorder($border-grey, $border-white, 4px);
     margin-top: 16px;
     display: grid;
     grid-template-rows: repeat(9, 1fr);

@@ -7,11 +7,11 @@ import {
 
 import styles from "./AppWrapper.module.scss";
 
-type Props = {
+interface Props {
   title: string;
   icon: string;
   children: JSX.Element;
-};
+}
 
 const AppWrapper: React.FC<Props> = ({ title, icon, children }) => {
   return (

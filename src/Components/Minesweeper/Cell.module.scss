@@ -1,0 +1,9 @@
+@import "src/styles/config.scss";
+
+.cell {
+  @include winXPDefaultBorder($border-white, $border-grey, 4px);
+  height: 30px;
+  width: 30px;
+  @include flex(row, center, center);
+  cursor: pointer;
+}

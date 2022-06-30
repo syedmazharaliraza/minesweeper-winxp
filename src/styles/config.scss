@@ -1,33 +1,18 @@
 $primaryColor: #245dda;
+$border-white: #fffefe;
+$border-grey: #7b7b7b;
 
-@mixin flexColumn {
+@mixin flex($dir, $just-cont: initial, $align-item: initial) {
   display: flex;
-  flex-direction: column;
+  flex-direction: $dir;
+  justify-content: $just-cont;
+  align-items: $align-item;
 }
 
-@mixin flexRow {
-  display: flex;
-  flex-direction: row;
-}
-
-@mixin flexCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin winXPDefaultBorder {
-  border: 2px solid;
-  border-bottom-color: #fffefe;
-  border-right-color: #fffefe;
-  border-left-color: #7b7b7b;
-  border-top-color: #7b7b7b;
-}
-
-@mixin winXPDefaultBorderInverted {
-  border: 2px solid;
-  border-top-color: #fffefe;
-  border-left-color: #fffefe;
-  border-bottom-color: #7b7b7b;
-  border-right-color: #7b7b7b;
+@mixin winXPDefaultBorder($left-top, $right-bottom, $width) {
+  border: $width solid;
+  border-bottom-color: $right-bottom;
+  border-right-color: $right-bottom;
+  border-left-color: $left-top;
+  border-top-color: $left-top;
 }

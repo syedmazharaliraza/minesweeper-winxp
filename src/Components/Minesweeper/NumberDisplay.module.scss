@@ -6,6 +6,6 @@
   font-weight: 600;
   color: #ff0701;
   background-color: #1c0000;
-  @include flexCenter;
+  @include flex(row, center, center);
   font-size: 36px;
 }
