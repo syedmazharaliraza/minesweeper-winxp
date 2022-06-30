@@ -1,0 +1,11 @@
+@import "src/styles/config.scss";
+
+.numberDisplay {
+  height: 50px;
+  width: 80px;
+  font-weight: 600;
+  color: #ff0701;
+  background-color: #1c0000;
+  @include flexCenter;
+  font-size: 36px;
+}

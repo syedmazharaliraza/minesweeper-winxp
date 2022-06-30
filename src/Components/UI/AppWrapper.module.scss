@@ -1,7 +1,7 @@
 @import "src/styles/config.scss";
 
 .wrapper {
-  border: 3px solid $primaryColor;
+  border: 4px solid $primaryColor;
   border-radius: 6px 6px 0 0;
   .header {
     @include flexRow;
