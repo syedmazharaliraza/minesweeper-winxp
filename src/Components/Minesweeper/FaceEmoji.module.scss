@@ -7,4 +7,8 @@
   width: 50px;
   cursor: pointer;
   @include winXPDefaultBorder($border-white, $border-grey, 4px);
+  &:active {
+    @include winXPDefaultBorder($border-grey, $border-white, 4px);
+    transform: translate(4px, 4px);
+  }
 }

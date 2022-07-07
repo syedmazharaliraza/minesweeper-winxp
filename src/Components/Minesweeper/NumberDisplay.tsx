@@ -7,7 +7,9 @@ interface Props {
 const NumberDisplay: React.FC<Props> = ({ value }) => {
   return (
     <div className={styles.numberDisplay}>
-      {value.toString().padStart(3, "0")}
+      {value < 0
+        ? `-${Math.abs(value).toString().padStart(2, "0")}`
+        : value.toString().padStart(3, "0")}
     </div>
   );
 };

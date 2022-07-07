@@ -8,9 +8,19 @@ interface ButtonProps {
   state: CellState;
   value: CellValue;
   setFace: (face: Face) => any;
+  onClick: (rowIndex: number, colIndex: number) => any;
+  onContext: (e: any, row: number, col: number) => any;
 }
 
-const Cell: React.FC<ButtonProps> = ({ row, col, state, value, setFace }) => {
+const Cell: React.FC<ButtonProps> = ({
+  row,
+  col,
+  state,
+  value,
+  setFace,
+  onClick,
+  onContext,
+}) => {
   function renderContent(): React.ReactNode {
     if (state === CellState.open) {
       if (value === CellValue.mine) {
@@ -31,12 +41,14 @@ const Cell: React.FC<ButtonProps> = ({ row, col, state, value, setFace }) => {
       className={`${styles.cell} ${state === CellState.open && styles.open} ${
         styles["value_" + value]
       }`}
+      onClick={onClick.bind(this, row, col)}
       onMouseDown={() => {
         setFace(Face.scared);
       }}
       onMouseUp={() => {
         setFace(Face.smile);
       }}
+      onContextMenu={(e) => onContext(e, row, col)}
     >
       {renderContent()}
     </div>
