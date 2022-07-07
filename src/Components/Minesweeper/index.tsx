@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CellInterface, Face } from "../../constants/Minesweeper";
 import AppWrapper from "../UI/AppWrapper";
 import styles from "./index.module.scss";
 import minesweeperIcon from "../../assets/AppIcons/minesweeperIcon.webp";
@@ -8,10 +9,22 @@ import { generateCells } from "../../utils/Minesweeper";
 import Cell from "./Cell";
 
 const Minesweeper: React.FC = () => {
-  const [cells, setCells] = useState(generateCells());
+  const [cells, setCells] = useState<CellInterface[][]>(generateCells());
+  const [faceEmoji, setFaceEmoji] = useState<Face>(Face.smile);
+
+  console.log(cells);
   const renderCells = (): React.ReactNode => {
     return cells.map((row, rowIndex) =>
-      cells.map((col, colIndex) => <Cell key={`${rowIndex} - ${colIndex}`} />)
+      row.map((col, colIndex) => (
+        <Cell
+          key={`${rowIndex} - ${colIndex}`}
+          row={rowIndex}
+          col={colIndex}
+          state={col.state}
+          value={col.value}
+          setFace={setFaceEmoji}
+        />
+      ))
     );
   };
   return (
@@ -19,7 +32,7 @@ const Minesweeper: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <NumberDisplay value={0} />
-          <FaceEmoji />
+          <FaceEmoji faceEmoji={faceEmoji} />
           <NumberDisplay value={55} />
         </div>
         <div className={styles.body}>{renderCells()}</div>

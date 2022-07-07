@@ -1,5 +1,6 @@
 export const MAX_ROWS = 9;
 export const MAX_COLS = 9;
+export const MAX_MINES = 10;
 
 export enum CellValue {
   none,
@@ -11,7 +12,7 @@ export enum CellValue {
   six,
   seven,
   eight,
-  bomb,
+  mine,
 }
 
 export enum CellState {
@@ -23,4 +24,11 @@ export enum CellState {
 export interface CellInterface {
   value: CellValue;
   state: CellState;
+}
+
+export enum Face {
+  smile = "🙂",
+  lost = "😵",
+  won = "😎",
+  scared = "😦",
 }

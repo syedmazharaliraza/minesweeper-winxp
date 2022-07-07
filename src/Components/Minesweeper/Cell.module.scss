@@ -4,6 +4,38 @@
   @include winXPDefaultBorder($border-white, $border-grey, 4px);
   height: 30px;
   width: 30px;
+  font-weight: 600;
   @include flex(row, center, center);
   cursor: pointer;
+  &:active {
+    @include winXPDefaultBorder($border-grey, $border-white, 4px);
+  }
+  &.open {
+    border-color: #7b7b7b;
+    border-width: 1px;
+  }
+  &.value_1 {
+    color: blue;
+  }
+  &.value_2 {
+    color: green;
+  }
+  &.value_3 {
+    color: red;
+  }
+  &.value_4 {
+    color: purple;
+  }
+  &.value_5 {
+    color: maroon;
+  }
+  &.value_6 {
+    color: turquoise;
+  }
+  &.value_7 {
+    color: black;
+  }
+  &.value_8 {
+    color: gray;
+  }
 }
