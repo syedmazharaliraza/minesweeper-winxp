@@ -24,6 +24,7 @@ export enum CellState {
 export interface CellInterface {
   value: CellValue;
   state: CellState;
+  red: boolean;
 }
 
 export enum Face {

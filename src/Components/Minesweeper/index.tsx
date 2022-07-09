@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { CellInterface, CellState, Face } from "../../constants/Minesweeper";
+import {
+  CellInterface,
+  CellState,
+  CellValue,
+  Face,
+} from "../../constants/Minesweeper";
 import AppWrapper from "../UI/AppWrapper";
 import styles from "./index.module.scss";
 import minesweeperIcon from "../../assets/AppIcons/minesweeperIcon.webp";
 import NumberDisplay from "./NumberDisplay";
 import FaceEmoji from "./FaceEmoji";
-import { generateCells } from "../../utils/Minesweeper";
+import {
+  checkIfWon,
+  generateCells,
+  openMultipleCells,
+  showAllMines,
+} from "../../utils/Minesweeper";
 import Cell from "./Cell";
 
 const Minesweeper: React.FC = () => {
@@ -14,6 +24,8 @@ const Minesweeper: React.FC = () => {
   const [timer, setTimer] = useState<number>(0);
   const [live, setLive] = useState<boolean>(false);
   const [flags, setFlags] = useState<number>(10);
+  const [lost, setLost] = useState<boolean>(false);
+  const [won, setWon] = useState<boolean>(false);
 
   useEffect(() => {
     if (live && timer < 999) {
@@ -27,19 +39,64 @@ const Minesweeper: React.FC = () => {
     }
   }, [live, timer]);
 
+  useEffect(() => {
+    if (lost) {
+      setLive(false);
+      setFaceEmoji(Face.lost);
+    } else {
+      setFaceEmoji(Face.smile);
+    }
+  }, [lost]);
+  useEffect(() => {
+    if (won) {
+      setLive(false);
+      setFaceEmoji(Face.won);
+    } else {
+      setFaceEmoji(Face.smile);
+    }
+  }, [won]);
+
   const cellClickHandler = (rowIndex: number, colIndex: number) => {
+    let currentCells = cells.slice();
+    let currentCell = currentCells[rowIndex][colIndex];
+
     if (!live) {
       setLive(true);
+      if (currentCell.value === CellValue.mine) {
+        while (currentCell.value === CellValue.mine) {
+          currentCells = generateCells();
+          currentCell = currentCells[rowIndex][colIndex];
+          setCells(currentCells);
+        }
+      }
+      setLive(true);
+    }
+
+    if (currentCell.state === (CellState.flagged || CellState.open)) {
+      return;
+    } else if (currentCell.value === CellValue.mine) {
+      setLost(true);
+      currentCell.red = true;
+      currentCells = showAllMines(currentCells);
+    } else if (currentCell.value === CellValue.none) {
+      const newCells = openMultipleCells(currentCells, rowIndex, colIndex);
+      setCells(newCells);
+    } else {
+      currentCell.state = CellState.open;
+    }
+    setCells(currentCells);
+    if (checkIfWon(currentCells)) {
+      setWon(true);
     }
   };
 
   const faceClickHandler = () => {
-    if (live) {
-      setLive(false);
-      setTimer(0);
-      setCells(generateCells());
-      setFlags(10);
-    }
+    setLost(false);
+    setLive(false);
+    setTimer(0);
+    setCells(generateCells());
+    setFlags(10);
+    setWon(false);
   };
 
   const onContextHandler = (e: any, row: number, col: number) => {
@@ -48,7 +105,7 @@ const Minesweeper: React.FC = () => {
       return;
     }
     const currentCells = cells.slice();
-    const currentCell = cells[row][col];
+    const currentCell = currentCells[row][col];
     if (currentCell.state === CellState.open) {
       return;
     } else if (currentCell.state === CellState.closed) {
@@ -56,7 +113,7 @@ const Minesweeper: React.FC = () => {
       currentCells[row][col].state = CellState.flagged;
     } else {
       setFlags((prevVal) => prevVal + 1);
-      currentCells[row][col].state = CellState.closed;
+      currentCell.state = CellState.closed;
     }
     setCells(currentCells);
   };
@@ -70,6 +127,8 @@ const Minesweeper: React.FC = () => {
           col={colIndex}
           state={col.state}
           value={col.value}
+          hasLost={lost}
+          red={col.red}
           setFace={setFaceEmoji}
           onClick={cellClickHandler}
           onContext={onContextHandler}

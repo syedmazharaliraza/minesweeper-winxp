@@ -7,6 +7,8 @@ interface ButtonProps {
   col: number;
   state: CellState;
   value: CellValue;
+  hasLost: boolean;
+  red: boolean;
   setFace: (face: Face) => any;
   onClick: (rowIndex: number, colIndex: number) => any;
   onContext: (e: any, row: number, col: number) => any;
@@ -17,6 +19,8 @@ const Cell: React.FC<ButtonProps> = ({
   col,
   state,
   value,
+  hasLost,
+  red,
   setFace,
   onClick,
   onContext,
@@ -40,14 +44,29 @@ const Cell: React.FC<ButtonProps> = ({
     <div
       className={`${styles.cell} ${state === CellState.open && styles.open} ${
         styles["value_" + value]
+      } ${red && styles.red} ${
+        hasLost &&
+        state === CellState.flagged &&
+        value !== CellValue.mine &&
+        styles.wrongFlag
       }`}
-      onClick={onClick.bind(this, row, col)}
-      onMouseDown={() => {
-        setFace(Face.scared);
-      }}
-      onMouseUp={() => {
-        setFace(Face.smile);
-      }}
+      onClick={!hasLost ? onClick.bind(this, row, col) : undefined}
+      onMouseDown={
+        !hasLost
+          ? () => {
+              if (state === CellState.closed) {
+                setFace(Face.scared);
+              }
+            }
+          : undefined
+      }
+      onMouseUp={
+        !hasLost
+          ? () => {
+              setFace(Face.smile);
+            }
+          : undefined
+      }
       onContextMenu={(e) => onContext(e, row, col)}
     >
       {renderContent()}
