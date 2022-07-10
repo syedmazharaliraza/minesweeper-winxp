@@ -21,28 +21,29 @@ const getAdjascentCells = (
   bottomLeftCell: CellInterface | null,
   bottomRightCell: CellInterface | null
 ] => {
+  const topLeftCell: CellInterface | null =
+    rowIndex > 0 && colIndex > 0 ? cells[rowIndex - 1][colIndex - 1] : null;
   const topCell: CellInterface | null =
     rowIndex > 0 ? cells[rowIndex - 1][colIndex] : null;
   const topRightCell: CellInterface | null =
     rowIndex > 0 && colIndex < MAX_COLS - 1
       ? cells[rowIndex - 1][colIndex + 1]
       : null;
-  const topLeftCell: CellInterface | null =
-    rowIndex > 0 && colIndex > 0 ? cells[rowIndex - 1][colIndex - 1] : null;
   const leftCell: CellInterface | null =
     colIndex > 0 ? cells[rowIndex][colIndex - 1] : null;
   const rightCell: CellInterface | null =
-    colIndex > 0 ? cells[rowIndex][colIndex + 1] : null;
-  const bottomCell: CellInterface | null =
-    rowIndex < MAX_ROWS - 1 ? cells[rowIndex + 1][colIndex] : null;
+    colIndex < MAX_COLS - 1 ? cells[rowIndex][colIndex + 1] : null;
   const bottomLeftCell: CellInterface | null =
     rowIndex < MAX_ROWS - 1 && colIndex > 0
       ? cells[rowIndex + 1][colIndex - 1]
       : null;
+  const bottomCell: CellInterface | null =
+    rowIndex < MAX_ROWS - 1 ? cells[rowIndex + 1][colIndex] : null;
   const bottomRightCell: CellInterface | null =
     rowIndex < MAX_ROWS - 1 && colIndex < MAX_COLS - 1
       ? cells[rowIndex + 1][colIndex + 1]
       : null;
+
   return [
     topCell,
     topRightCell,
