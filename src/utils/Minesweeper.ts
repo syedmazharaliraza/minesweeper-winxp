@@ -209,7 +209,7 @@ export const openMultipleCells = (
 export const showAllMines = (cells: CellInterface[][]): CellInterface[][] => {
   const newCells = cells.map((row) =>
     row.map((col) => {
-      if (col.value === CellValue.mine) {
+      if (col.value === CellValue.mine && col.state !== CellState.flagged) {
         col.state = CellState.open;
         return col;
       }
