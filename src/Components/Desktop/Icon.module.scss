@@ -1,0 +1,16 @@
+@import "src/styles/config.scss";
+
+.icon {
+  cursor: default;
+  @include flex(column, center, center);
+  gap: 8px;
+  padding: 10px;
+  img {
+    width: 36px;
+  }
+  span {
+    color: white;
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0, 0, 0);
+  }
+}

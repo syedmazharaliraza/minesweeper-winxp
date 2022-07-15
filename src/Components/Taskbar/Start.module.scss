@@ -1,0 +1,25 @@
+@import "src/styles/config.scss";
+
+.start_button {
+  @include flex(row, center, center);
+  gap: 5px;
+  height: 100%;
+  width: 120px;
+  padding-right: 10px;
+  color: white;
+  font-weight: 500;
+  font-style: italic;
+  background: rgb(29, 157, 36);
+  background: radial-gradient(
+    circle,
+    rgba(29, 157, 36, 1) 82%,
+    rgba(0, 134, 7, 1) 100%
+  );
+  border-top-right-radius: 6px 60%;
+  border-bottom-right-radius: 6px 60%;
+  text-shadow: 1px 1px 4px rgb(60, 60, 60);
+  cursor: pointer;
+  img {
+    width: 20px;
+  }
+}

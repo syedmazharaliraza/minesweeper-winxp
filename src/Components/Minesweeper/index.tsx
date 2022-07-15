@@ -59,6 +59,7 @@ const Minesweeper: React.FC = () => {
   const cellClickHandler = (rowIndex: number, colIndex: number) => {
     let currentCells = cells.slice();
     let currentCell = currentCells[rowIndex][colIndex];
+    console.log(currentCell, currentCells);
 
     if (!live) {
       setLive(true);
@@ -106,6 +107,7 @@ const Minesweeper: React.FC = () => {
     }
     const currentCells = cells.slice();
     const currentCell = currentCells[row][col];
+    console.log(currentCell, currentCells);
     if (currentCell.state === CellState.open) {
       return;
     } else if (currentCell.state === CellState.closed) {
