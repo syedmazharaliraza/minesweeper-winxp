@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Icons.module.scss";
 import Icon from "./Icon";
-import { desktopApps } from "../../constants/Desktop";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Icons: React.FC = () => {
+  const desktopApps = useSelector((state: RootState) => state.desktopApps);
   return (
     <div className={styles.icons}>
       {desktopApps.map((app) => (

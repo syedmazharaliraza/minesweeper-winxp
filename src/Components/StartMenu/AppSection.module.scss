@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 75%;
+  background-color: white;
+  .right_cont {
+    background: #d2e4fb;
+    border-left: 1px solid #a6b9cc;
+  }
+}

@@ -1,12 +1,15 @@
 @import "src/styles/config.scss";
 
 .taskbar {
-  height: 34px;
+  height: $taskbarHeight;
   width: 100%;
   position: fixed;
   bottom: 0;
   background-color: $primaryColor;
   @include flex(row, $just-cont: space-between);
+  .left_cont {
+    position: relative;
+  }
   .time {
     height: 100%;
     width: 100px;
