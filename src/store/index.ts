@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import desktopAppsReducer from "./slice/desktopAppsSlice";
+import desktopReducer from "./slice/desktopSlice";
+import userInfoReducer from "./slice/userInfoSlice";
+import taskbarReducer from "./slice/taskbarSlice";
 
 export const store = configureStore({
   reducer: {
-    desktopApps: desktopAppsReducer,
+    desktop: desktopReducer,
+    taskbar: taskbarReducer,
+    userInfo: userInfoReducer,
   },
 });
 

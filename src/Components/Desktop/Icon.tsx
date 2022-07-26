@@ -1,16 +1,12 @@
 import React from "react";
+import { appInterface } from "../../constants/Apps";
 import styles from "./Icon.module.scss";
 
-interface IconProps {
-  icon: string;
-  appName: string;
-}
-
-const Icon: React.FC<IconProps> = ({ icon, appName }) => {
+const Icon: React.FC<{ app: appInterface }> = ({ app }) => {
   return (
-    <div className={styles.icon}>
-      <img src={icon} alt={appName} />
-      <span>{appName}</span>
+    <div className={styles.icon + ` ${app.disabled && styles.disabled}`}>
+      <img src={app.icon} alt={app.name} />
+      <span>{app.name}</span>
     </div>
   );
 };

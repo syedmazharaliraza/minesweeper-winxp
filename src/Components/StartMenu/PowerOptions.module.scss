@@ -1,3 +1,22 @@
+@import "src/styles/config.scss";
+
 .container {
-  height: 10%;
+  height: $powerOptionsHeight;
+  width: 100%;
+  @include flex(row, flex-end, center);
+  gap: 14px;
+  padding: 10px 8px;
+  .power_option {
+    height: 100%;
+    @include flex(row, center, center);
+    gap: 4px;
+    img {
+      height: 100%;
+    }
+    span {
+      font-size: 12px;
+      font-weight: 200;
+      color: white;
+    }
+  }
 }

@@ -1,0 +1,21 @@
+@import "src/styles/config.scss";
+
+.section {
+  @include flex(row, $align-item: center);
+  &.disabled {
+    cursor: not-allowed;
+  }
+  gap: 6px;
+  cursor: default;
+  img {
+    height: 26px;
+  }
+  span {
+    font-weight: 300;
+    color: black;
+    font-size: 14px;
+    &.bold {
+      font-weight: 500;
+    }
+  }
+}

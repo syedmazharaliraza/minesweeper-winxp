@@ -4,16 +4,17 @@
   @include flex(row, center, center);
   gap: 5px;
   height: 100%;
-  width: 120px;
+  width: 100px;
   padding-right: 10px;
+  letter-spacing: -1px;
   color: white;
   font-weight: 500;
   font-style: italic;
-  background: rgb(29, 157, 36);
+  background: rgb(34, 148, 31);
   background: radial-gradient(
     circle,
-    rgba(29, 157, 36, 1) 82%,
-    rgba(0, 134, 7, 1) 100%
+    rgba(34, 148, 31, 1) 50%,
+    rgba(15, 108, 14, 1) 100%
   );
   border-top-right-radius: 6px 60%;
   border-bottom-right-radius: 6px 60%;
@@ -21,7 +22,7 @@
   -webkit-box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  cursor: default;
   img {
     width: 20px;
   }

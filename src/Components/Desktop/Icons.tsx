@@ -1,15 +1,14 @@
 import React from "react";
 import styles from "./Icons.module.scss";
 import Icon from "./Icon";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useAppSelector } from "../../store/hooks";
 
 const Icons: React.FC = () => {
-  const desktopApps = useSelector((state: RootState) => state.desktopApps);
+  const { apps: desktopApps } = useAppSelector((state) => state.desktop);
   return (
     <div className={styles.icons}>
       {desktopApps.map((app) => (
-        <Icon icon={app.icon} appName={app.name} />
+        <Icon key={app.id} app={app} />
       ))}
     </div>
   );

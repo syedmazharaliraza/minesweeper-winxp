@@ -2,6 +2,8 @@ $primaryColor: #245dda;
 $border-white: #fffefe;
 $border-grey: #7b7b7b;
 $taskbarHeight: 34px;
+$userInfoHeight: 70px;
+$powerOptionsHeight: 48px;
 
 @mixin flex($dir, $just-cont: initial, $align-item: initial) {
   display: flex;

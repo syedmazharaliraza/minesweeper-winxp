@@ -1,8 +1,23 @@
+@import "src/styles/config.scss";
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 75%;
+  height: 100%;
   background-color: white;
+  hr {
+    border: none;
+    height: 1px;
+    width: 80%;
+    background-color: #9cb0ca;
+    margin: 4px auto;
+  }
+  .right_cont,
+  .left_cont {
+    padding: 10px;
+    @include flex(column);
+    gap: 8px;
+  }
   .right_cont {
     background: #d2e4fb;
     border-left: 1px solid #a6b9cc;
