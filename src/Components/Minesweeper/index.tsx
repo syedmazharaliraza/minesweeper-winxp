@@ -59,9 +59,10 @@ const Minesweeper: React.FC = () => {
   const cellClickHandler = (rowIndex: number, colIndex: number) => {
     let currentCells = cells.slice();
     let currentCell = currentCells[rowIndex][colIndex];
-    console.log(currentCell, currentCells);
-
-    if (!live) {
+    if (won) {
+      return;
+    }
+    if (!live && !won) {
       setLive(true);
       if (currentCell.value === CellValue.mine) {
         while (currentCell.value === CellValue.mine) {
@@ -72,6 +73,8 @@ const Minesweeper: React.FC = () => {
       }
       setLive(true);
     }
+
+    console.log(currentCells);
 
     if (currentCell.state === (CellState.flagged || CellState.open)) {
       return;
@@ -107,7 +110,6 @@ const Minesweeper: React.FC = () => {
     }
     const currentCells = cells.slice();
     const currentCell = currentCells[row][col];
-    console.log(currentCell, currentCells);
     if (currentCell.state === CellState.open) {
       return;
     } else if (currentCell.state === CellState.closed) {
@@ -130,6 +132,7 @@ const Minesweeper: React.FC = () => {
           state={col.state}
           value={col.value}
           hasLost={lost}
+          hasWon={won}
           red={col.red}
           setFace={setFaceEmoji}
           onClick={cellClickHandler}

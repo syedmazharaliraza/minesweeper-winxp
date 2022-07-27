@@ -8,6 +8,7 @@ interface ButtonProps {
   state: CellState;
   value: CellValue;
   hasLost: boolean;
+  hasWon: boolean;
   red: boolean;
   setFace: (face: Face) => any;
   onClick: (rowIndex: number, colIndex: number) => any;
@@ -20,6 +21,7 @@ const Cell: React.FC<ButtonProps> = ({
   state,
   value,
   hasLost,
+  hasWon,
   red,
   setFace,
   onClick,
@@ -50,9 +52,9 @@ const Cell: React.FC<ButtonProps> = ({
         value !== CellValue.mine &&
         styles.wrongFlag
       }`}
-      onClick={!hasLost ? onClick.bind(this, row, col) : undefined}
+      onClick={!hasLost && !hasWon ? onClick.bind(this, row, col) : undefined}
       onMouseDown={
-        !hasLost
+        !hasLost && !hasWon
           ? () => {
               if (state === CellState.closed) {
                 setFace(Face.scared);
@@ -61,7 +63,7 @@ const Cell: React.FC<ButtonProps> = ({
           : undefined
       }
       onMouseUp={
-        !hasLost
+        !hasLost && !hasWon
           ? () => {
               setFace(Face.smile);
             }
