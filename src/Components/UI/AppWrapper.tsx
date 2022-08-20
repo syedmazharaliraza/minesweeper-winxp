@@ -4,16 +4,23 @@ import {
   FaRegWindowMaximize,
   FaTimes,
 } from "react-icons/fa";
+import { useAppDispatch } from "../../store/hooks";
+import { closeApp } from "../../store/slice/taskbarSlice";
 
 import styles from "./AppWrapper.module.scss";
 
 interface Props {
   title: string;
   icon: string;
+  id: string;
   children: JSX.Element;
 }
 
-const AppWrapper: React.FC<Props> = ({ title, icon, children }) => {
+const AppWrapper: React.FC<Props> = ({ title, icon, id, children }) => {
+  const dispatch = useAppDispatch();
+  const closeAppHandler = () => {
+    dispatch(closeApp(id));
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -28,7 +35,7 @@ const AppWrapper: React.FC<Props> = ({ title, icon, children }) => {
           <button className={styles.resize}>
             <FaRegWindowMaximize />
           </button>
-          <button className={styles.close}>
+          <button className={styles.close} onClick={closeAppHandler}>
             <FaTimes size={26} />
           </button>
         </div>

@@ -1,16 +1,15 @@
 import React from "react";
 import {
+  allApps as startMenuApps,
   startMenuLeftPinnedApps,
   startMenuRightBottomApps,
   startMenuRightMiddleApps,
   startMenuRightTopApps,
 } from "../../constants/Apps";
-import { useAppSelector } from "../../store/hooks";
 import styles from "./AppSection.module.scss";
 import StartMenuApp from "./StartMenuApp";
 
 const AppSection: React.FC = () => {
-  const { startMenuApps } = useAppSelector((state) => state.taskbar);
   return (
     <div className={styles.container}>
       <div className={styles.left_cont}>

@@ -1,14 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { allApps, appInterface } from "../../constants/Apps";
 
 interface taskBarState {
-  startMenuApps: appInterface[];
   isStartMenuOpen: boolean;
   openApps: string[];
 }
 
 const initialState: taskBarState = {
-  startMenuApps: allApps,
   isStartMenuOpen: false,
   openApps: [],
 };
@@ -17,6 +14,11 @@ const taskbarSlice = createSlice({
   name: "taskbar",
   initialState,
   reducers: {
+    openApp: (state, action: PayloadAction<string>) => {
+      if (!state.openApps.includes(action.payload)) {
+        state.openApps.push(action.payload);
+      }
+    },
     closeApp: (state, action: PayloadAction<string>) => {
       state.openApps = state.openApps.filter((id) => id !== action.payload);
     },
@@ -26,5 +28,5 @@ const taskbarSlice = createSlice({
   },
 });
 
-export const { closeApp, toggleStartMenu } = taskbarSlice.actions;
+export const { openApp, closeApp, toggleStartMenu } = taskbarSlice.actions;
 export default taskbarSlice.reducer;

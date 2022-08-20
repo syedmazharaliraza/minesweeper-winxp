@@ -7,7 +7,6 @@ import {
 } from "../../constants/Minesweeper";
 import AppWrapper from "../UI/AppWrapper";
 import styles from "./index.module.scss";
-import minesweeperIcon from "../../assets/AppIcons/minesweeperIcon.webp";
 import NumberDisplay from "./NumberDisplay";
 import FaceEmoji from "./FaceEmoji";
 import {
@@ -18,7 +17,11 @@ import {
 } from "../../utils/Minesweeper";
 import Cell from "./Cell";
 
-const Minesweeper: React.FC = () => {
+const Minesweeper: React.FC<{
+  appName: string;
+  appIcon: string;
+  appId: string;
+}> = ({ appName, appIcon, appId }) => {
   const [cells, setCells] = useState<CellInterface[][]>(generateCells());
   const [faceEmoji, setFaceEmoji] = useState<Face>(Face.smile);
   const [timer, setTimer] = useState<number>(0);
@@ -143,7 +146,7 @@ const Minesweeper: React.FC = () => {
   };
 
   return (
-    <AppWrapper title='Minesweeper' icon={minesweeperIcon}>
+    <AppWrapper title={appName} icon={appIcon} id={appId}>
       <div className={styles.container}>
         <div className={styles.header}>
           <NumberDisplay value={flags} />

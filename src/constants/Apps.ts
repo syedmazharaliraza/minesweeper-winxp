@@ -12,6 +12,7 @@ import controlPanelIcon from "../assets/StartMenu/controlPanelIcon.webp";
 import printersIcon from "../assets/StartMenu/printersIcon.webp";
 import minesweeperIcon from "../assets/AppIcons/minesweeperIcon.webp";
 import { v4 as uuidv4 } from "uuid";
+import Minesweeper from "../Components/Minesweeper";
 
 export interface appInterface {
   id: string;
@@ -19,6 +20,7 @@ export interface appInterface {
   fullname?: string;
   icon: string;
   disabled: boolean;
+  component?: any;
 }
 
 export const startMenuLeftPinnedApps: appInterface[] = [
@@ -113,5 +115,6 @@ export const allApps: appInterface[] = [
     name: "Minesweeper",
     icon: minesweeperIcon,
     disabled: false,
+    component: Minesweeper,
   },
 ];
