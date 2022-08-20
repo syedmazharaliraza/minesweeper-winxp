@@ -5,7 +5,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useAppDispatch } from "../../store/hooks";
-import { closeApp } from "../../store/slice/taskbarSlice";
+import { closeApp, minimiseApp } from "../../store/slice/taskbarSlice";
 
 import styles from "./AppWrapper.module.scss";
 
@@ -21,6 +21,10 @@ const AppWrapper: React.FC<Props> = ({ title, icon, id, children }) => {
   const closeAppHandler = () => {
     dispatch(closeApp(id));
   };
+  const minimiseAppHandler = () => {
+    dispatch(minimiseApp(id));
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -29,7 +33,7 @@ const AppWrapper: React.FC<Props> = ({ title, icon, id, children }) => {
           {title}
         </div>
         <div className={styles.buttons}>
-          <button className={styles.resize}>
+          <button className={styles.resize} onClick={minimiseAppHandler}>
             <FaRegWindowMinimize />
           </button>
           <button className={styles.resize}>

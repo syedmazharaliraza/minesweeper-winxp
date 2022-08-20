@@ -6,7 +6,7 @@ import Icons from "./Desktop/Icons";
 import Taskbar from "./Taskbar";
 
 const App: React.FC = () => {
-  const { openApps } = useAppSelector((state) => state.taskbar);
+  const { openApps, minimisedApps } = useAppSelector((state) => state.taskbar);
 
   return (
     <>
@@ -14,7 +14,8 @@ const App: React.FC = () => {
       {allApps.map((app) => {
         const { component: Component, id, icon, name } = app;
         return (
-          openApps.includes(id) && (
+          openApps.includes(id) &&
+          !minimisedApps.includes(id) && (
             <div className={styles.App}>
               <Component key={id} appName={name} appIcon={icon} appId={id} />
             </div>
