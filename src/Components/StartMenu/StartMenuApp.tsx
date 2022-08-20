@@ -7,7 +7,9 @@ import { openApp } from "../../store/slice/taskbarSlice";
 const StartMenuApp: React.FC<{ app: appInterface }> = ({ app }) => {
   const dispatch = useAppDispatch();
   const openAppHandler = () => {
-    dispatch(openApp(app.id));
+    if (!app.disabled) {
+      dispatch(openApp(app.id));
+    }
   };
   return (
     <div

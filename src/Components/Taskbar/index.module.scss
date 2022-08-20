@@ -9,6 +9,10 @@
   @include flex(row, $just-cont: space-between);
   .left_cont {
     position: relative;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
   }
   .time {
     height: 100%;
