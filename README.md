@@ -23,3 +23,6 @@ Minesweeper rules are very simple. (Source: [minesweeper.online](https://mineswe
 3. Navigate to the project directory `cd minesweeper-winxp`
 4. Install dependencies with `npm install`
 5. Run `npm start`
+
+## 🌐 Web App
+[https://minesweeper-winxp.netlify.app/](https://minesweeper-winxp.netlify.app/)
