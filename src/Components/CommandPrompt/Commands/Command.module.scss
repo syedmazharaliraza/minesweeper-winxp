@@ -1,0 +1,25 @@
+@import "src/styles/config.scss";
+
+.container {
+  @include flex(column);
+  gap: 6px;
+  padding: 12px 0;
+  line-height: 1.5;
+  .link {
+    cursor: pointer;
+    color: white;
+  }
+  .linkWrapper {
+    @include flex(column);
+    gap: 4px;
+    p {
+      @include md {
+        @include flex(column);
+      }
+    }
+    b {
+      display: inline-block;
+      width: 100px;
+    }
+  }
+}

@@ -4,6 +4,12 @@ $border-grey: #7b7b7b;
 $taskbarHeight: 34px;
 $userInfoHeight: 70px;
 $powerOptionsHeight: 48px;
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
 
 @mixin flex($dir, $just-cont: initial, $align-item: initial) {
   display: flex;
@@ -18,4 +24,40 @@ $powerOptionsHeight: 48px;
   border-right-color: $right-bottom;
   border-left-color: $left-top;
   border-top-color: $left-top;
+}
+
+@mixin xs() {
+  @media screen and (max-width: $xs) {
+    @content;
+  }
+}
+
+@mixin sm() {
+  @media screen and (max-width: $sm) {
+    @content;
+  }
+}
+
+@mixin md() {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin lg() {
+  @media screen and (max-width: $lg) {
+    @content;
+  }
+}
+
+@mixin xl() {
+  @media screen and (max-width: $xl) {
+    @content;
+  }
+}
+
+@mixin xxl() {
+  @media screen and (max-width: $xxl) {
+    @content;
+  }
 }
