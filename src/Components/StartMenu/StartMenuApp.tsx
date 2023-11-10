@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./StartMenuApp.module.scss";
 import { appInterface } from "../../constants/apps";
 import { useAppDispatch } from "../../store/hooks";
-import { openApp } from "../../store/slice/taskbarSlice";
+import { openApp, toggleStartMenu } from "../../store/slice/taskbarSlice";
 
 const StartMenuApp: React.FC<{ app: appInterface }> = ({ app }) => {
   const dispatch = useAppDispatch();
   const openAppHandler = () => {
     if (!app.disabled) {
+      dispatch(toggleStartMenu());
       dispatch(openApp(app.id));
     }
   };
