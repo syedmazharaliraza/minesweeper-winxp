@@ -4,28 +4,8 @@ export const commands = [
     description: "Learn more about me",
   },
   {
-    cmd: "clear",
-    description: "Clear the terminal",
-  },
-  {
-    cmd: "print",
-    description: "Print out a message",
-  },
-  {
-    cmd: "education",
-    description: "Explore my educational background",
-  },
-  {
-    cmd: "gui",
-    description: "Navigate to my portfolio in GUI",
-  },
-  {
-    cmd: "list -a",
-    description: "List all available commands",
-  },
-  {
-    cmd: "history",
-    description: "View command history",
+    cmd: "experience",
+    description: "Explore my professional background",
   },
   {
     cmd: "projects",
@@ -36,12 +16,32 @@ export const commands = [
     description: "Check out my social media accounts",
   },
   {
-    cmd: "welcome",
-    description: "Display the hero section",
+    cmd: "education",
+    description: "Explore my educational background",
   },
   {
-    cmd: "experience",
-    description: "Explore my professional background",
+    cmd: "gui",
+    description: "Navigate to my portfolio in GUI",
+  },
+  {
+    cmd: "clear",
+    description: "Clear the terminal",
+  },
+  {
+    cmd: "print",
+    description: "Print out a message",
+  },
+  {
+    cmd: "list -a",
+    description: "List all available commands",
+  },
+  {
+    cmd: "history",
+    description: "View command history",
+  },
+  {
+    cmd: "welcome",
+    description: "Display the hero section",
   },
 ] as const;
 
