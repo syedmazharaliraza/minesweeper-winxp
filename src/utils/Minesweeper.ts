@@ -1,11 +1,5 @@
-import {
-  MAX_ROWS,
-  MAX_COLS,
-  CellValue,
-  CellState,
-  CellInterface,
-  MAX_MINES,
-} from "../constants/Minesweeper";
+import { MAX_COLS, MAX_MINES, MAX_ROWS } from "../constants/minesweeper";
+import { CellValue, CellState, CellInterface } from "../types/minesweeper";
 
 const getAdjascentCells = (
   cells: CellInterface[][],

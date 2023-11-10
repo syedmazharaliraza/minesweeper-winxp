@@ -1,9 +1,9 @@
 import React from "react";
-import { allApps } from "../constants/Apps";
 import { useAppSelector } from "../store/hooks";
 import styles from "./App.module.scss";
 import Icons from "./Desktop/Icons";
 import Taskbar from "./Taskbar";
+import { allApps } from "../constants/apps";
 
 const App: React.FC = () => {
   const { openApps, minimisedApps } = useAppSelector((state) => state.taskbar);

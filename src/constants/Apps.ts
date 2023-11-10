@@ -11,13 +11,15 @@ import myMusicIcon from "../assets/StartMenu/myMusicIcon.webp";
 import controlPanelIcon from "../assets/StartMenu/controlPanelIcon.webp";
 import printersIcon from "../assets/StartMenu/printersIcon.webp";
 import minesweeperIcon from "../assets/AppIcons/minesweeperIcon.webp";
+import cmdIcon from "../assets/AppIcons/cmdIcon.webp";
 import { v4 as uuidv4 } from "uuid";
 import Minesweeper from "../Components/Minesweeper";
+import CommandPrompt from "../Components/CommandPrompt";
+import { AppNamesEnum } from "../types/apps";
 
 export interface appInterface {
   id: string;
-  name: string;
-  fullname?: string;
+  name: AppNamesEnum;
   icon: string;
   disabled: boolean;
   component?: any;
@@ -26,15 +28,13 @@ export interface appInterface {
 export const startMenuLeftPinnedApps: appInterface[] = [
   {
     id: uuidv4(),
-    name: "Internet",
-    fullname: "InternetExplorer",
+    name: AppNamesEnum.Internet,
     icon: internetIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "E-mail",
-    fullname: "Outlook Express",
+    name: AppNamesEnum.Email,
     icon: emailIcon,
     disabled: true,
   },
@@ -43,31 +43,31 @@ export const startMenuLeftPinnedApps: appInterface[] = [
 export const startMenuRightTopApps: appInterface[] = [
   {
     id: uuidv4(),
-    name: "My Documents",
+    name: AppNamesEnum.MyDocuments,
     icon: myDocIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "My Recent Docum..",
+    name: AppNamesEnum.MyRecentDocuments,
     icon: recentDocIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "My Pictures",
+    name: AppNamesEnum.MyPictures,
     icon: myImagesIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "My Music",
+    name: AppNamesEnum.MyMusic,
     icon: myMusicIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "My Computer",
+    name: AppNamesEnum.MyComputer,
     icon: myComputerIcon,
     disabled: true,
   },
@@ -76,13 +76,13 @@ export const startMenuRightTopApps: appInterface[] = [
 export const startMenuRightMiddleApps: appInterface[] = [
   {
     id: uuidv4(),
-    name: "Control Panel",
+    name: AppNamesEnum.ControlPanel,
     icon: controlPanelIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "Printers",
+    name: AppNamesEnum.Printers,
     icon: printersIcon,
     disabled: true,
   },
@@ -91,19 +91,19 @@ export const startMenuRightMiddleApps: appInterface[] = [
 export const startMenuRightBottomApps: appInterface[] = [
   {
     id: uuidv4(),
-    name: "Help and Support",
+    name: AppNamesEnum.HelpAndSupport,
     icon: helpIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "Search",
+    name: AppNamesEnum.Search,
     icon: searchIcon,
     disabled: true,
   },
   {
     id: uuidv4(),
-    name: "Run",
+    name: AppNamesEnum.Run,
     icon: runIcon,
     disabled: true,
   },
@@ -112,9 +112,16 @@ export const startMenuRightBottomApps: appInterface[] = [
 export const allApps: appInterface[] = [
   {
     id: uuidv4(),
-    name: "Minesweeper",
+    name: AppNamesEnum.Minesweeper,
     icon: minesweeperIcon,
     disabled: false,
     component: Minesweeper,
+  },
+  {
+    id: uuidv4(),
+    name: AppNamesEnum.Portfolio,
+    icon: cmdIcon,
+    disabled: false,
+    component: CommandPrompt,
   },
 ];

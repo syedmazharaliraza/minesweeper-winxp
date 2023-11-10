@@ -4,7 +4,7 @@ import {
   CellState,
   CellValue,
   Face,
-} from "../../constants/Minesweeper";
+} from "../../types/minesweeper";
 import AppWrapper from "../UI/AppWrapper";
 import styles from "./index.module.scss";
 import NumberDisplay from "./NumberDisplay";
@@ -16,12 +16,13 @@ import {
   showAllMines,
 } from "../../utils/Minesweeper";
 import Cell from "./Cell";
+import { IDesktopAppProps } from "../../types/apps";
 
-const Minesweeper: React.FC<{
-  appName: string;
-  appIcon: string;
-  appId: string;
-}> = ({ appName, appIcon, appId }) => {
+const Minesweeper: React.FC<IDesktopAppProps> = ({
+  appName,
+  appIcon,
+  appId,
+}) => {
   const [cells, setCells] = useState<CellInterface[][]>(generateCells());
   const [faceEmoji, setFaceEmoji] = useState<Face>(Face.smile);
   const [timer, setTimer] = useState<number>(0);
@@ -76,8 +77,6 @@ const Minesweeper: React.FC<{
       }
       setLive(true);
     }
-
-    console.log(currentCells);
 
     if (currentCell.state === (CellState.flagged || CellState.open)) {
       return;

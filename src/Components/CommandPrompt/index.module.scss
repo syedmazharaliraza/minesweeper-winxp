@@ -1,0 +1,18 @@
+@import "src/styles/config.scss";
+
+.container {
+  @include md {
+    width: 100%;
+  }
+  width: 800px;
+  height: 500px;
+  @include md {
+    height: 350px;
+  }
+  background-color: black;
+  color: white;
+  padding: 12px 4px;
+  font-size: 14px;
+  @include flex(column);
+  overflow: auto;
+}

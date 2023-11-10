@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { allApps, appInterface } from "../../constants/Apps";
+import { allApps, appInterface } from "../../constants/apps";
 
 interface DesktopState {
   apps: appInterface[];

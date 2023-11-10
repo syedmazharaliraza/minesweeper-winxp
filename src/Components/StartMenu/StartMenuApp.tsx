@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./StartMenuApp.module.scss";
-import { appInterface } from "../../constants/Apps";
+import { appInterface } from "../../constants/apps";
 import { useAppDispatch } from "../../store/hooks";
 import { openApp } from "../../store/slice/taskbarSlice";
 
