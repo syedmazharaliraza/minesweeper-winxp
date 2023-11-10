@@ -13,7 +13,7 @@ interface Props {
   title: string;
   icon: string;
   id: string;
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 const AppWrapper: React.FC<Props> = ({ title, icon, id, children }) => {

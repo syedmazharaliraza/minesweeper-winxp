@@ -5,7 +5,7 @@ import {
   startMenuRightBottomApps,
   startMenuRightMiddleApps,
   startMenuRightTopApps,
-} from "../../constants/Apps";
+} from "../../constants/apps";
 import styles from "./AppSection.module.scss";
 import StartMenuApp from "./StartMenuApp";
 

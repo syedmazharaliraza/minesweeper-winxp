@@ -1,5 +1,5 @@
 import React from "react";
-import { appInterface } from "../../constants/Apps";
+import { appInterface } from "../../constants/apps";
 import { useAppDispatch } from "../../store/hooks";
 import { openApp } from "../../store/slice/taskbarSlice";
 import styles from "./Icon.module.scss";

@@ -1,5 +1,5 @@
 import React from "react";
-import { allApps } from "../constants/Apps";
+import { allApps } from "../constants/apps";
 import { useAppSelector } from "../store/hooks";
 import styles from "./App.module.scss";
 import Icons from "./Desktop/Icons";

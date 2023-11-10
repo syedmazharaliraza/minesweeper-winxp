@@ -18,6 +18,7 @@ const taskbarSlice = createSlice({
   reducers: {
     openApp: (state, action: PayloadAction<string>) => {
       if (!state.openApps.includes(action.payload)) {
+        state.minimisedApps.push(...state.openApps);
         state.openApps.push(action.payload);
       }
     },
@@ -30,6 +31,7 @@ const taskbarSlice = createSlice({
       state.openApps = state.openApps.filter((id) => id !== action.payload);
     },
     showApp: (state, action: PayloadAction<string>) => {
+      state.minimisedApps.push(...state.openApps);
       state.minimisedApps = state.minimisedApps.filter(
         (id) => id !== action.payload
       );

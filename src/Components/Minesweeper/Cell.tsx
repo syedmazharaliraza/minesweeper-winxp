@@ -1,6 +1,6 @@
 import React from "react";
-import { CellState, CellValue, Face } from "../../constants/Minesweeper";
 import styles from "./Cell.module.scss";
+import { CellState, CellValue, Face } from "../../types/minesweeper";
 
 interface ButtonProps {
   row: number;
@@ -10,9 +10,13 @@ interface ButtonProps {
   hasLost: boolean;
   hasWon: boolean;
   red: boolean;
-  setFace: (face: Face) => any;
-  onClick: (rowIndex: number, colIndex: number) => any;
-  onContext: (e: any, row: number, col: number) => any;
+  setFace: (face: Face) => void;
+  onClick: (rowIndex: number, colIndex: number) => void;
+  onContext: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    row: number,
+    col: number
+  ) => void;
 }
 
 const Cell: React.FC<ButtonProps> = ({
@@ -30,7 +34,7 @@ const Cell: React.FC<ButtonProps> = ({
   function renderContent(): React.ReactNode {
     if (state === CellState.open) {
       if (value === CellValue.mine) {
-        return <span aria-label='mine'>💣</span>;
+        return <span aria-label="mine">💣</span>;
       }
       if (value === CellValue.none) {
         return null;
@@ -38,7 +42,7 @@ const Cell: React.FC<ButtonProps> = ({
         return value;
       }
     } else if (state === CellState.flagged) {
-      return <span aria-label='flag'>🚩</span>;
+      return <span aria-label="flag">🚩</span>;
     }
     return null;
   }
