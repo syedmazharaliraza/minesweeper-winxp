@@ -24,6 +24,10 @@ export const commands = [
     description: "Navigate to my portfolio in GUI",
   },
   {
+    cmd: "resume",
+    description: "Link to my resume on Google Drive",
+  },
+  {
     cmd: "clear",
     description: "Clear the terminal",
   },
@@ -77,6 +81,9 @@ export const socials = [
 ] as const;
 
 export const portfolioLink = "https://mazhar-ali.com";
+
+export const resumeLink =
+  "https://drive.google.com/file/d/1CwAvaQo6MuNYHtNWGRpp2y4a_DHteVnt/view";
 
 export const projects = [
   {

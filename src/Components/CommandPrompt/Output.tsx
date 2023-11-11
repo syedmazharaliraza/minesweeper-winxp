@@ -5,10 +5,11 @@ import Socials from "./Commands/Socials";
 import GeneralOutput from "./Commands/GeneralOutput";
 import Welcome from "./Commands/Welcome";
 import Help from "./Commands/Help";
-import Gui from "./Commands/Gui";
 import History from "./Commands/History";
 import Projects from "./Commands/Projects";
 import Experience from "./Commands/Experience";
+import Redirect from "./Commands/Redirect";
+import { portfolioLink, resumeLink } from "../../constants/cmd";
 
 interface IOutputProps {
   cmd: string;
@@ -27,7 +28,9 @@ const Output = ({ cmd, cmdHistory, setCmdHistory }: IOutputProps) => {
     case "socials":
       return <Socials />;
     case "gui":
-      return <Gui />;
+      return (
+        <Redirect link={portfolioLink}>Redirecting to my portfolio...</Redirect>
+      );
     case "list -a":
       return <Help />;
     case "history":
@@ -36,6 +39,8 @@ const Output = ({ cmd, cmdHistory, setCmdHistory }: IOutputProps) => {
       return <Projects />;
     case "experience":
       return <Experience />;
+    case "resume":
+      return <Redirect link={resumeLink}>Redirecting to my resume...</Redirect>;
 
     case "clear":
       setCmdHistory([]);

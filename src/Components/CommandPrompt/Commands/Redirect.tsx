@@ -1,23 +1,27 @@
 import { useEffect } from "react";
-import { portfolioLink } from "../../../constants/cmd";
 import styles from "./Command.module.scss";
 
-const Gui: React.FC = () => {
+interface IRedirectProps {
+  children: React.ReactNode;
+  link: string;
+}
+
+const Redirect: React.FC<IRedirectProps> = ({ children, link }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.open(portfolioLink, "_blank");
+      window.open(link, "_blank");
     }, 500);
 
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [link]);
 
   return (
     <div className={styles.container}>
-      <p>Redirecting to {portfolioLink.split("//")[1]}</p>
+      <p>{children}</p>
     </div>
   );
 };
 
-export default Gui;
+export default Redirect;
