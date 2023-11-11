@@ -20,6 +20,11 @@ const taskbarSlice = createSlice({
       if (!state.openApps.includes(action.payload)) {
         state.minimisedApps.push(...state.openApps);
         state.openApps.push(action.payload);
+      } else {
+        state.minimisedApps.push(...state.openApps);
+        state.minimisedApps = state.minimisedApps.filter(
+          (id) => id !== action.payload
+        );
       }
     },
     minimiseApp: (state, action: PayloadAction<string>) => {
