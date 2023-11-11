@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { IDesktopAppProps } from "../../types/apps";
 import AppWrapper from "../UI/AppWrapper";
 import styles from "./index.module.scss";
 import Search from "./Search";
 import Output from "./Output";
-import { commands } from "../../constants/cmd";
 
 const CommandPrompt: React.FC<IDesktopAppProps> = ({
   appIcon,
@@ -15,6 +14,7 @@ const CommandPrompt: React.FC<IDesktopAppProps> = ({
   const [inputCommand, setInputCommand] = useState<string>("");
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [rerender, setRerender] = useState<boolean>(true);
+  const cmdPointer = useRef<number>(1);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -22,9 +22,35 @@ const CommandPrompt: React.FC<IDesktopAppProps> = ({
     }
   }, [rerender]);
 
+  const handleArrowKeys = useCallback(
+    (e: KeyboardEvent) => {
+      ["ArrowUp", "ArrowDown"].includes(e.code) && e.preventDefault();
+      if (e.code === "ArrowUp") {
+        setInputCommand(cmdHistory[cmdHistory.length - cmdPointer.current]);
+        if (cmdPointer.current < cmdHistory.length) {
+          cmdPointer.current++;
+        }
+      } else if (e.code === "ArrowDown") {
+        setInputCommand(cmdHistory[cmdHistory.length - cmdPointer.current + 1]);
+        if (cmdPointer.current > 1) {
+          cmdPointer.current--;
+        }
+      }
+    },
+    [cmdHistory, setInputCommand, cmdPointer]
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleArrowKeys);
+    return () => {
+      window.removeEventListener("keydown", handleArrowKeys);
+    };
+  }, [handleArrowKeys]);
+
   const commandSubmitHandler = (cmd: string) => {
     setCmdHistory((prev) => [...prev, cmd.trim()]);
     setInputCommand("");
+    cmdPointer.current = 1;
     setRerender(!rerender);
   };
   return (
