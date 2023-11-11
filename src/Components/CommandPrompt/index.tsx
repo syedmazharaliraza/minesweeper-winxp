@@ -14,7 +14,7 @@ const CommandPrompt: React.FC<IDesktopAppProps> = ({
   const [inputCommand, setInputCommand] = useState<string>("");
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [rerender, setRerender] = useState<boolean>(true);
-  const cmdPointer = useRef<number>(1);
+  const cmdPointer = useRef<number>(0);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -26,14 +26,19 @@ const CommandPrompt: React.FC<IDesktopAppProps> = ({
     (e: KeyboardEvent) => {
       ["ArrowUp", "ArrowDown"].includes(e.code) && e.preventDefault();
       if (e.code === "ArrowUp") {
-        setInputCommand(cmdHistory[cmdHistory.length - cmdPointer.current]);
         if (cmdPointer.current < cmdHistory.length) {
           cmdPointer.current++;
+          setInputCommand(cmdHistory[cmdHistory.length - cmdPointer.current]);
         }
       } else if (e.code === "ArrowDown") {
-        setInputCommand(cmdHistory[cmdHistory.length - cmdPointer.current + 1]);
-        if (cmdPointer.current > 1) {
+        if (cmdPointer.current >= 1) {
+          if (cmdPointer.current === 1) {
+            setInputCommand("");
+            cmdPointer.current = 0;
+            return;
+          }
           cmdPointer.current--;
+          setInputCommand(cmdHistory[cmdHistory.length - cmdPointer.current]);
         }
       }
     },
@@ -50,7 +55,7 @@ const CommandPrompt: React.FC<IDesktopAppProps> = ({
   const commandSubmitHandler = (cmd: string) => {
     setCmdHistory((prev) => [...prev, cmd.trim()]);
     setInputCommand("");
-    cmdPointer.current = 1;
+    cmdPointer.current = 0;
     setRerender(!rerender);
   };
   return (
